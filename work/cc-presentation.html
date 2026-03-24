@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Campaign Champion Presentation — Namrata Shajwani</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/project.css">
+<style>
+/* ── WIDER CONTAINER FOR THIS PROJECT ── */
+.proj-container-wide{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ── LAPTOP SLIDESHOW ── */
+.laptop-slideshow{position:relative;max-width:100%;margin:28px auto 0;user-select:none}
+.laptop-screen{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#f5f3ef;border-radius:6px}
+.laptop-screen img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .45s ease}
+.laptop-screen img.ls-active{opacity:1}
+
+/* slide arrows */
+.ls-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.35);border:none;cursor:pointer;color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;z-index:5;opacity:0}
+.laptop-slideshow:hover .ls-arrow{opacity:1}
+.ls-arrow:hover{background:rgba(0,0,0,.65)}
+.ls-prev{left:12px}
+.ls-next{right:12px}
+
+/* slide counter */
+.ls-counter{text-align:center;margin-top:14px;font-size:12px;color:#8A8880;letter-spacing:.06em}
+
+/* dot indicators */
+.ls-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.ls-dot{width:7px;height:7px;border-radius:50%;background:#D0CDC8;cursor:pointer;transition:background .25s,transform .25s}
+.ls-dot.active{background:#C96A4A;transform:scale(1.25)}
+
+/* spread image — full width */
+.spread-wrap{margin-top:40px;border-radius:14px;overflow:hidden;background:#EAE8E2}
+.spread-wrap img{width:100%;display:block}
+
+@media(max-width:1024px){
+  .proj-container-wide{padding:0 32px}
+}
+@media(max-width:768px){
+  .proj-container-wide{padding:0 20px}
+  .ls-arrow{width:32px;height:32px;font-size:15px;opacity:1}
+  .ls-prev{left:6px}
+  .ls-next{right:6px}
+}
+@media(max-width:480px){
+  .proj-container-wide{padding:0 16px}
+  .ls-arrow{width:28px;height:28px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="nav-solid">
+  <a class="nav-circle" id="navCircle" href="../index.html">
+    <span class="home-icon" style="opacity:1">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+        <polyline points="9,21 9,12 15,12 15,21" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+  <div class="nav-right">
+    <a href="../index.html#work">Work</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#about">About</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="bc-sep">→</span>
+  <a href="../index.html#work">Work</a>
+  <span class="bc-sep">→</span>
+  <a href="all.html?cat=brand">Brand Systems & Comms</a>
+  <span class="bc-sep">→</span>
+  Campaign Champion Presentation
+</div>
+
+<!-- HERO -->
+<div class="proj-hero">
+  <img src="../images/work/cc-presentation/cc-presentation-heroimage.webp" alt="Campaign Champion Presentation — Northeastern University">
+  <div class="proj-hero-overlay"></div>
+  <div class="proj-hero-content">
+    <div class="proj-hero-cat">Brand Systems & Communications · 2026</div>
+    <div class="proj-hero-title">Campaign Champion<br><em>Presentation</em></div>
+    <div class="pill-row">
+      <!-- UPDATE THESE PILLS LATER -->
+      <span class="kpill">Presentation Design</span>
+      <span class="kpill">Brand Systems</span>
+      <span class="kpill">Visual Communication</span>
+      <span class="kpill">Layout Design</span>
+    </div>
+  </div>
+</div>
+
+<div class="proj-container-wide">
+
+  <!-- META -->
+  <div class="meta-row">
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Graphic Design &<br>Program Assistant</div>
+    </div>
+    <div>
+      <div class="meta-label">Built with</div>
+      <div class="meta-value">Adobe Illustrator · Photoshop<br>Canva · PowerPoint</div>
+    </div>
+    <div>
+      <div class="meta-label">Client</div>
+      <div class="meta-value">Northeastern University</div>
+    </div>
+  </div>
+
+  <!-- THE PROJECT -->
+  <div class="proj-section">
+    <div class="proj-sec-label">The Project</div>
+    <!-- UPDATE HEADLINE LATER -->
+    <div class="proj-sec-headline">Designing the visual identity for Northeastern's mid-year Campaign Champion Co-Chair Call.</div>
+    <div class="proj-body">
+      <!-- UPDATE BODY TEXT LATER -->
+      <p>[Project description coming soon — Namrata will provide the full writeup for this section.]</p>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE PRESENTATION SLIDESHOW -->
+  <div class="proj-section">
+    <div class="proj-sec-label">Presentation Walkthrough</div>
+    <div class="proj-body" style="margin-bottom:8px">
+      <p>Browse through the full presentation using the arrows, keyboard, or swipe.</p>
+    </div>
+
+    <div class="laptop-slideshow" id="laptopSlideshow" tabindex="0">
+      <div class="laptop-screen" id="laptopScreen">
+        <img src="../images/work/cc-presentation/cc1.webp" alt="Slide 1" class="ls-active" loading="lazy">
+        <img src="../images/work/cc-presentation/cc2.webp" alt="Slide 2" loading="lazy">
+        <img src="../images/work/cc-presentation/cc3.webp" alt="Slide 3" loading="lazy">
+        <img src="../images/work/cc-presentation/cc4.webp" alt="Slide 4" loading="lazy">
+        <img src="../images/work/cc-presentation/cc5.webp" alt="Slide 5" loading="lazy">
+        <img src="../images/work/cc-presentation/cc6.webp" alt="Slide 6" loading="lazy">
+        <img src="../images/work/cc-presentation/cc7.webp" alt="Slide 7" loading="lazy">
+        <img src="../images/work/cc-presentation/cc8.webp" alt="Slide 8" loading="lazy">
+      </div>
+      <button class="ls-arrow ls-prev" id="lsPrev">‹</button>
+      <button class="ls-arrow ls-next" id="lsNext">›</button>
+      <div class="ls-counter"><span id="lsCurrent">1</span> / <span id="lsTotal">8</span></div>
+      <div class="ls-dots" id="lsDots"></div>
+    </div>
+  </div>
+
+  <!-- SPREAD VIEW -->
+  <div class="proj-section">
+    <div class="proj-sec-label">Full Spread</div>
+    <div class="spread-wrap">
+      <img src="../images/work/cc-presentation/cc-presentation-spread.webp" alt="All slides spread view" loading="lazy">
+    </div>
+  </div>
+
+</div>
+
+<!-- PROJECT NAVIGATION -->
+<div class="proj-nav">
+  <a class="pn-btn" href="javascript:history.back()">
+    <span class="pn-arrow pn-arrow-left">←</span>
+    Back
+  </a>
+  <a class="pn-btn pn-btn-active" href="all.html">
+    View All Projects
+  </a>
+  <a class="pn-btn" href="all.html?cat=brand">
+    More in Brand Systems
+    <span class="pn-arrow pn-arrow-right">→</span>
+  </a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="contact-pre">Let's talk</div>
+  <div class="contact-head">Good work starts<br>with a good conversation.</div>
+  <div class="c-btns">
+    <a class="c-btn-coffee" href="mailto:shajwaninamrata@gmail.com?subject=Let's%20chat%20more%20over%20coffee">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#fff" stroke-width="1.6"/><polyline points="22,6 12,13 2,6" stroke="#fff" stroke-width="1.6"/></svg>
+      Let's get coffee!
+    </a>
+  </div>
+  <div class="contact-foot">
+    <span class="contact-copy">© 2025 Namrata Shajwani</span>
+    <button class="back-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+    <span></span>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+// ── LAPTOP SLIDESHOW ──
+(function(){
+  var screen=document.getElementById('laptopScreen');
+  var slides=screen.querySelectorAll('img');
+  var prevBtn=document.getElementById('lsPrev');
+  var nextBtn=document.getElementById('lsNext');
+  var counter=document.getElementById('lsCurrent');
+  var dotsWrap=document.getElementById('lsDots');
+  var slideshow=document.getElementById('laptopSlideshow');
+  var total=slides.length;
+  var cur=0;
+
+  for(var i=0;i<total;i++){
+    var d=document.createElement('div');
+    d.className='ls-dot'+(i===0?' active':'');
+    d.setAttribute('data-i',i);
+    d.addEventListener('click',function(){goTo(parseInt(this.getAttribute('data-i')))});
+    dotsWrap.appendChild(d);
+  }
+  var dots=dotsWrap.querySelectorAll('.ls-dot');
+
+  function goTo(idx){
+    slides[cur].classList.remove('ls-active');
+    dots[cur].classList.remove('active');
+    cur=((idx%total)+total)%total;
+    slides[cur].classList.add('ls-active');
+    dots[cur].classList.add('active');
+    counter.textContent=cur+1;
+  }
+
+  prevBtn.addEventListener('click',function(){goTo(cur-1)});
+  nextBtn.addEventListener('click',function(){goTo(cur+1)});
+
+  slideshow.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(cur-1)}
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goTo(cur+1)}
+  });
+  var inView=false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){inView=entries[0].isIntersecting},{threshold:.3}).observe(slideshow);
+  }
+  document.addEventListener('keydown',function(e){
+    if(!inView)return;
+    if(e.key==='ArrowLeft'){e.preventDefault();goTo(cur-1)}
+    if(e.key==='ArrowRight'){e.preventDefault();goTo(cur+1)}
+  });
+
+  var sx=0,sy=0;
+  screen.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  screen.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    var dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){dx<0?goTo(cur+1):goTo(cur-1)}
+  },{passive:true});
+
+  var wheelCooldown=false;
+  slideshow.addEventListener('wheel',function(e){
+    if(wheelCooldown)return;
+    var delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+    if(Math.abs(delta)>30){
+      e.preventDefault();
+      delta>0?goTo(cur+1):goTo(cur-1);
+      wheelCooldown=true;
+      setTimeout(function(){wheelCooldown=false},400);
+    }
+  },{passive:false});
+})();
+</script>
+</body>
+</html>
