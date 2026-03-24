@@ -1,3 +1,123 @@
-body {
-    background-color: white;
+/* ═══════════════════════════════════════════════
+   NAMRATA SHAJWANI — SHARED STYLES
+   css/style.css
+   Used on every page: nav, contact, typography, resets
+   ═══════════════════════════════════════════════ */
+
+/* ── RESET & BASE ── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#fff;font-family:'DM Sans',sans-serif;color:#151412;overflow-x:hidden}
+
+/* ── TYPOGRAPHY ── */
+a{text-decoration:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;transition:background .4s,box-shadow .4s}
+nav.scrolled{background:#fff;box-shadow:0 1px 0 #E0DDD7}
+.nav-circle{width:32px;height:32px;border-radius:50%;border:2px solid rgba(248,246,241,.6);cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.nav-circle:hover{transform:scale(1.1)}
+nav.scrolled .nav-circle{border-color:#999}
+.nav-circle.advancing{animation:pulse .3s ease}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.home-icon{opacity:0;transition:opacity .3s;position:absolute;display:flex;align-items:center;justify-content:center}
+nav.scrolled .home-icon{opacity:1}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-right a{font-size:11px;font-weight:700;color:rgba(248,246,241,.6);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;cursor:pointer}
+.nav-right a:hover{color:rgba(248,246,241,1)}
+nav.scrolled .nav-right a{color:#8A8880}
+nav.scrolled .nav-right a:hover{color:#151412}
+.nav-sep{color:rgba(248,246,241,.3);font-size:11px;transition:color .4s}
+nav.scrolled .nav-sep{color:#C0BDB8}
+
+/* Nav — solid background variant (for pages without hero behind nav) */
+nav.nav-solid{background:#fff;box-shadow:0 1px 0 #E0DDD7}
+nav.nav-solid .nav-circle{border-color:#999}
+nav.nav-solid .home-icon{opacity:1}
+nav.nav-solid .nav-right a{color:#8A8880}
+nav.nav-solid .nav-right a:hover{color:#151412}
+nav.nav-solid .nav-sep{color:#C0BDB8}
+
+/* Breadcrumb — subtle path below nav on inner pages */
+.breadcrumb{padding:14px 48px 0;margin-top:72px;font-size:11px;color:#B0ADA8;letter-spacing:.04em}
+.breadcrumb a{color:#B0ADA8;text-decoration:none;transition:color .2s}
+.breadcrumb a:hover{color:#151412}
+.breadcrumb .bc-sep{margin:0 8px;color:#D0CDC8}
+
+/* ── CONTACT FOOTER ── */
+.contact{background:#151412;padding:88px 48px;text-align:center}
+.contact-pre{font-size:11px;letter-spacing:.18em;color:#888;text-transform:uppercase;margin-bottom:18px}
+.contact-head{font-family:'Fraunces',serif;font-size:clamp(28px,4.5vw,56px);font-weight:400;color:#F0EDE8;line-height:1.1;margin-bottom:40px}
+.c-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+.c-btn-coffee{padding:14px 32px;border-radius:100px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:9px;letter-spacing:.03em;border:none;background:#C96A4A;color:#fff}
+.c-btn-coffee:hover{background:#b55a3a;transform:scale(1.02)}
+.contact-foot{display:flex;justify-content:center;align-items:center;padding-top:28px;border-top:1px solid #2a2a2a;font-size:12px;color:#aaa;position:relative}
+.contact-copy{position:absolute;left:0;font-size:12px;color:#aaa}
+.back-btn{background:none;border:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C96A4A;cursor:pointer}
+
+/* ── PROJECT NAV (bottom of project pages) ── */
+.proj-nav{background:#1a1917;padding:48px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
+.pn-btn{padding:12px 28px;border-radius:100px;font-size:12px;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#888;border:1px solid #333;background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:0;transition:all .25s;overflow:hidden}
+.pn-btn:hover{border-color:#666;color:#F8F6F1}
+.pn-arrow{display:inline-block;max-width:0;opacity:0;transition:max-width .3s ease,opacity .25s ease,margin .3s ease;overflow:hidden;white-space:nowrap}
+.pn-btn:hover .pn-arrow-left{max-width:24px;opacity:1;margin-right:8px}
+.pn-btn:hover .pn-arrow-right{max-width:24px;opacity:1;margin-left:8px}
+.pn-btn-active{border-color:#C96A4A;color:#C96A4A}
+.pn-btn-active:hover{background:rgba(201,106,74,.1);color:#C96A4A;border-color:#C96A4A}
+
+/* ── SHARED UTILITY ── */
+.sec-eyebrow-row{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:32px}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.14em;color:#8A8880;text-transform:uppercase}
+.sec-divider{color:#D0CDC8;font-size:11px}
+.view-all{font-size:11px;font-weight:700;color:#C96A4A;text-decoration:underline;text-underline-offset:4px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;background:none;border:none;font-family:'DM Sans',sans-serif;padding:0}
+.view-all:hover{opacity:.7}
+
+/* ── GRID CARDS (reused on home, all-works, category pages) ── */
+.proj-rows{display:flex;flex-direction:column;gap:12px}
+.proj-row{display:grid;gap:12px}
+.proj-row.r3{grid-template-columns:repeat(3,1fr)}
+.proj-row.r2{grid-template-columns:repeat(2,1fr)}
+.grid-card{border-radius:14px;overflow:hidden;position:relative;cursor:pointer;background:#EAE8E2;aspect-ratio:1/1}
+.grid-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.grid-card:hover img{transform:scale(1.06)}
+.g-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.88) 0%,rgba(10,9,8,.1) 55%,transparent 100%);opacity:0;transition:opacity .35s}
+.grid-card:hover .g-overlay{opacity:1}
+.g-info{position:absolute;bottom:0;left:0;right:0;padding:18px 20px;transform:translateY(8px);opacity:0;transition:all .35s}
+.grid-card:hover .g-info{opacity:1;transform:translateY(0)}
+.g-cat{font-size:10px;letter-spacing:.14em;color:#C96A4A;text-transform:uppercase;margin-bottom:4px}
+.g-title{font-size:14px;font-weight:500;color:#F8F6F1}
+
+/* ── RESPONSIVE — SHARED ── */
+@media(max-width:1024px){
+  nav{padding:18px 32px}
+  .contact{padding:72px 32px}
+  .breadcrumb{padding:14px 32px 0}
+  .proj-nav{padding:40px 32px}
+}
+@media(max-width:768px){
+  nav{padding:16px 20px}
+  .contact{padding:64px 20px 80px}
+  .breadcrumb{padding:12px 20px 0}
+  .proj-nav{padding:36px 20px;gap:10px}
+  .pn-btn{padding:10px 20px;font-size:11px}
+  .proj-row.r3{grid-template-columns:repeat(2,1fr)}
+  .proj-row.r2{grid-template-columns:repeat(2,1fr)}
+  .contact-foot{flex-direction:column;gap:12px;text-align:center}
+  .contact-copy{position:static;order:2}
+  .back-btn{order:1}
+}
+@media(max-width:480px){
+  nav{padding:14px 16px}
+  .contact{padding:56px 16px 72px}
+  .breadcrumb{padding:10px 16px 0;font-size:10px}
+  .proj-nav{flex-direction:column;gap:8px;padding:32px 16px}
+  .pn-btn{width:100%;justify-content:center}
+  .proj-row.r3,.proj-row.r2{grid-template-columns:1fr}
+  .grid-card{aspect-ratio:1/1}
+  .nav-sep{display:none}
+  .nav-right{gap:12px}
+  .nav-right a{font-size:10px}
+  .contact-foot{flex-direction:column;gap:12px;text-align:center}
+  .contact-copy{position:static;order:2}
+  .back-btn{order:1}
 }
