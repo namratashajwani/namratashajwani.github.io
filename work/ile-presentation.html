@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ILE Presentation — Namrata Shajwani</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/project.css">
+<style>
+/* ── WIDER CONTAINER ── */
+.proj-container-wide{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ── iPad HORIZONTAL SLIDESHOW ── */
+.ipad-slideshow{position:relative;max-width:900px;margin:28px auto 0;user-select:none}
+
+/* iPad frame — horizontal/landscape with left shadow for depth */
+.ipad-frame{position:relative;background:#1a1a1a;border-radius:20px;padding:16px 24px;box-shadow:0 12px 48px rgba(0,0,0,.18),inset 0 0 0 1px rgba(255,255,255,.08),inset 6px 0 18px rgba(0,0,0,.35)}
+.ipad-camera{position:absolute;top:50%;left:8px;transform:translateY(-50%);width:6px;height:6px;background:#2a2a2a;border-radius:50%;z-index:2}
+.ipad-screen{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#000;border-radius:6px;cursor:none}
+
+/* custom cursor — translucent circle */
+.ipad-cursor{position:fixed;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.4);pointer-events:none;z-index:999;transform:translate(-50%,-50%);opacity:0;transition:opacity .2s,transform .15s}
+.ipad-cursor.visible{opacity:1}
+.ipad-cursor.pressing{transform:translate(-50%,-50%) scale(.75);background:rgba(255,255,255,.4)}
+
+/* horizontal scroll container */
+.ipad-scroll{position:absolute;inset:0;overflow-x:auto;overflow-y:hidden;display:flex;scroll-behavior:smooth;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.ipad-scroll::-webkit-scrollbar{display:none}
+.ipad-scroll img{min-width:100%;width:100%;height:100%;object-fit:contain;flex-shrink:0;scroll-snap-align:start;background:#000}
+
+/* indicator */
+.ipad-indicator{text-align:center;margin-top:16px;font-size:12px;color:#8A8880;letter-spacing:.06em}
+
+/* arrows */
+.ipad-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.35);border:none;cursor:pointer;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;z-index:5;opacity:0}
+.ipad-slideshow:hover .ipad-arrow{opacity:1}
+.ipad-arrow:hover{background:rgba(0,0,0,.65)}
+.ipad-prev{left:-48px}
+.ipad-next{right:-48px}
+
+/* dots */
+.ipad-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.ipad-dot{width:7px;height:7px;border-radius:50%;background:#D0CDC8;cursor:pointer;transition:background .25s,transform .25s}
+.ipad-dot.active{background:#C96A4A;transform:scale(1.25)}
+
+/* spread — back to contained with border radius */
+.spread-wrap{margin-top:40px;border-radius:14px;overflow:hidden;background:#EAE8E2}
+.spread-wrap img{width:100%;display:block}
+
+@media(max-width:1024px){
+  .proj-container-wide{padding:0 32px}
+  .ipad-prev{left:-40px}
+  .ipad-next{right:-40px}
+}
+@media(max-width:768px){
+  .proj-container-wide{padding:0 20px}
+  .ipad-slideshow{max-width:100%}
+  .ipad-frame{padding:12px 16px;border-radius:16px}
+  .ipad-arrow{opacity:1}
+  .ipad-prev{left:-36px}
+  .ipad-next{right:-36px}
+  .ipad-cursor{display:none}
+  .ipad-screen{cursor:grab}
+  .ipad-screen:active{cursor:grabbing}
+}
+@media(max-width:580px){
+  .ipad-prev{left:8px;background:rgba(0,0,0,.5)}
+  .ipad-next{right:8px;background:rgba(0,0,0,.5)}
+}
+@media(max-width:480px){
+  .proj-container-wide{padding:0 16px}
+  .ipad-frame{padding:8px 12px;border-radius:14px}
+  .ipad-arrow{width:30px;height:30px;font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="ipad-cursor" id="ipadCursor"></div>
+
+<!-- NAV -->
+<nav id="nav" class="nav-solid">
+  <a class="nav-circle" id="navCircle" href="../index.html">
+    <span class="home-icon" style="opacity:1">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+        <polyline points="9,21 9,12 15,12 15,21" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+  <div class="nav-right">
+    <a href="../index.html#work">Work</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#about">About</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="bc-sep">→</span>
+  <a href="../index.html#work">Work</a>
+  <span class="bc-sep">→</span>
+  <a href="all.html?cat=brand">Brand Systems & Comms</a>
+  <span class="bc-sep">→</span>
+  ILE Presentation
+</div>
+
+<!-- HERO -->
+<div class="proj-hero">
+  <img src="../images/work/ile-presentation/ile5_b.webp" alt="ILE Presentation — Northeastern University">
+  <div class="proj-hero-overlay"></div>
+  <div class="proj-hero-content">
+    <div class="proj-hero-cat">Brand Systems & Communications · 2026</div>
+    <div class="proj-hero-title">ILE<br><em>Presentation</em></div>
+    <div class="pill-row">
+      <!-- UPDATE THESE PILLS LATER -->
+      <span class="kpill">Presentation Design</span>
+      <span class="kpill">Brand Systems</span>
+      <span class="kpill">Visual Communication</span>
+      <span class="kpill">Layout Design</span>
+    </div>
+  </div>
+</div>
+
+<div class="proj-container-wide">
+
+  <!-- META -->
+  <div class="meta-row">
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Graphic Design &<br>Program Assistant</div>
+    </div>
+    <div>
+      <div class="meta-label">Built with</div>
+      <div class="meta-value">Adobe Illustrator · Photoshop<br>Canva · PowerPoint</div>
+    </div>
+    <div>
+      <div class="meta-label">Client</div>
+      <div class="meta-value">Northeastern University</div>
+    </div>
+  </div>
+
+  <!-- THE PROJECT -->
+  <div class="proj-section">
+    <div class="proj-sec-label">The Project</div>
+    <!-- UPDATE HEADLINE LATER -->
+    <div class="proj-sec-headline">Placeholder headline for ILE Presentation.</div>
+    <div class="proj-body">
+      <!-- UPDATE BODY TEXT LATER -->
+      <p>[Project description coming soon — Namrata will provide the full writeup for this section.]</p>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE iPad SLIDESHOW — HORIZONTAL -->
+  <div class="proj-section">
+    <div class="proj-sec-label">Presentation Walkthrough</div>
+    <div class="proj-body" style="margin-bottom:8px">
+      <p>Drag or scroll through the presentation inside the iPad, or use the arrows to jump between slides.</p>
+    </div>
+
+    <div class="ipad-slideshow" id="ipadSlideshow">
+      <div class="ipad-frame">
+        <div class="ipad-camera"></div>
+        <div class="ipad-screen" id="ipadScreen">
+          <div class="ipad-scroll" id="ipadScroll">
+            <img src="../images/work/ile-presentation/10.webp" alt="Slide 1" loading="lazy">
+            <img src="../images/work/ile-presentation/11.webp" alt="Slide 2" loading="lazy">
+            <img src="../images/work/ile-presentation/12.webp" alt="Slide 3" loading="lazy">
+            <img src="../images/work/ile-presentation/13.webp" alt="Slide 4" loading="lazy">
+            <img src="../images/work/ile-presentation/14.webp" alt="Slide 5" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <button class="ipad-arrow ipad-prev" id="ipadPrev">‹</button>
+      <button class="ipad-arrow ipad-next" id="ipadNext">›</button>
+      <div class="ipad-indicator" id="ipadIndicator">1 / 5</div>
+      <div class="ipad-dots" id="ipadDots"></div>
+    </div>
+  </div>
+
+  <!-- SPREAD VIEW -->
+  <div class="proj-section">
+    <div class="proj-sec-label">Full Spread</div>
+    <div class="spread-wrap">
+      <img src="../images/work/ile-presentation/ile-presentation-spread.webp" alt="All slides spread view" loading="lazy">
+    </div>
+  </div>
+
+</div>
+
+<!-- PROJECT NAVIGATION -->
+<div class="proj-nav">
+  <a class="pn-btn" href="javascript:history.back()">
+    <span class="pn-arrow pn-arrow-left">←</span>
+    Back
+  </a>
+  <a class="pn-btn pn-btn-active" href="all.html">
+    View All Projects
+  </a>
+  <a class="pn-btn" href="all.html?cat=brand">
+    More in Brand Systems
+    <span class="pn-arrow pn-arrow-right">→</span>
+  </a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="contact-pre">Let's talk</div>
+  <div class="contact-head">Good work starts<br>with a good conversation.</div>
+  <div class="c-btns">
+    <a class="c-btn-coffee" href="mailto:shajwaninamrata@gmail.com?subject=Let's%20chat%20more%20over%20coffee">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#fff" stroke-width="1.6"/><polyline points="22,6 12,13 2,6" stroke="#fff" stroke-width="1.6"/></svg>
+      Let's get coffee!
+    </a>
+  </div>
+  <div class="contact-foot">
+    <span class="contact-copy">© 2025 Namrata Shajwani</span>
+    <button class="back-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+    <span></span>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+(function(){
+  var scrollEl=document.getElementById('ipadScroll');
+  var screen=document.getElementById('ipadScreen');
+  var prevBtn=document.getElementById('ipadPrev');
+  var nextBtn=document.getElementById('ipadNext');
+  var indicator=document.getElementById('ipadIndicator');
+  var dotsWrap=document.getElementById('ipadDots');
+  var cursorEl=document.getElementById('ipadCursor');
+  var slides=scrollEl.querySelectorAll('img');
+  var total=slides.length;
+  var cur=0;
+
+  // build dots
+  for(var i=0;i<total;i++){
+    var d=document.createElement('div');
+    d.className='ipad-dot'+(i===0?' active':'');
+    d.setAttribute('data-i',i);
+    d.addEventListener('click',function(){goTo(parseInt(this.getAttribute('data-i')))});
+    dotsWrap.appendChild(d);
+  }
+  var dots=dotsWrap.querySelectorAll('.ipad-dot');
+
+  function updateIndicator(idx){
+    dots[cur].classList.remove('active');
+    cur=idx;
+    dots[cur].classList.add('active');
+    indicator.textContent=(cur+1)+' / '+total;
+  }
+
+  function goTo(idx){
+    idx=Math.max(0,Math.min(total-1,idx));
+    var slideWidth=slides[0].offsetWidth;
+    scrollEl.scrollTo({left:slideWidth*idx,behavior:'smooth'});
+  }
+
+  function getVisibleSlide(){
+    var scrollLeft=scrollEl.scrollLeft;
+    var slideWidth=slides[0].offsetWidth;
+    return Math.min(total-1,Math.max(0,Math.round(scrollLeft/slideWidth)));
+  }
+
+  // update indicator on scroll
+  var scrollTimer=null;
+  scrollEl.addEventListener('scroll',function(){
+    clearTimeout(scrollTimer);
+    scrollTimer=setTimeout(function(){
+      var vis=getVisibleSlide();
+      if(vis!==cur)updateIndicator(vis);
+    },80);
+  });
+
+  // arrow buttons
+  prevBtn.addEventListener('click',function(){goTo(cur-1)});
+  nextBtn.addEventListener('click',function(){goTo(cur+1)});
+
+  // keyboard
+  var inView=false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){inView=e[0].isIntersecting},{threshold:.3}).observe(document.getElementById('ipadSlideshow'));
+  }
+  document.addEventListener('keydown',function(e){
+    if(!inView)return;
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(cur-1)}
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goTo(cur+1)}
+  });
+
+  // custom cursor — show/hide/move
+  var cursorVisible=false;
+  screen.addEventListener('mouseenter',function(){
+    cursorEl.classList.add('visible');
+    cursorVisible=true;
+  });
+  screen.addEventListener('mouseleave',function(){
+    cursorEl.classList.remove('visible','pressing');
+    cursorVisible=false;
+  });
+  screen.addEventListener('mousemove',function(e){
+    if(cursorVisible){
+      cursorEl.style.left=e.clientX+'px';
+      cursorEl.style.top=e.clientY+'px';
+    }
+  });
+
+  // drag to scroll horizontally
+  var dragging=false,startX=0,startScroll=0,hasMoved=false;
+  screen.addEventListener('mousedown',function(e){
+    dragging=true;
+    hasMoved=false;
+    startX=e.clientX;
+    startScroll=scrollEl.scrollLeft;
+    scrollEl.style.scrollBehavior='auto';
+    scrollEl.style.scrollSnapType='none';
+    cursorEl.classList.add('pressing');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove',function(e){
+    if(!dragging)return;
+    var dx=startX-e.clientX;
+    if(Math.abs(dx)>3)hasMoved=true;
+    scrollEl.scrollLeft=startScroll+dx;
+    if(cursorVisible){
+      cursorEl.style.left=e.clientX+'px';
+      cursorEl.style.top=e.clientY+'px';
+    }
+  });
+  document.addEventListener('mouseup',function(){
+    if(!dragging)return;
+    dragging=false;
+    cursorEl.classList.remove('pressing');
+    scrollEl.style.scrollBehavior='smooth';
+    scrollEl.style.scrollSnapType='x mandatory';
+    // snap to nearest slide
+    var vis=getVisibleSlide();
+    goTo(vis);
+  });
+
+  // mouse wheel — horizontal scroll
+  var wheelCooldown=false;
+  screen.addEventListener('wheel',function(e){
+    if(wheelCooldown)return;
+    if(Math.abs(e.deltaX)>Math.abs(e.deltaY)&&Math.abs(e.deltaX)>15){
+      e.preventDefault();
+      e.deltaX>0?goTo(cur+1):goTo(cur-1);
+      wheelCooldown=true;
+      setTimeout(function(){wheelCooldown=false},500);
+    }
+  },{passive:false});
+
+  // touch swipe
+  var sx=0;
+  screen.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  screen.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){dx<0?goTo(cur+1):goTo(cur-1)}
+  },{passive:true});
+})();
+</script>
+</body>
+</html>

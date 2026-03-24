@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>All Work — Namrata Shajwani</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+/* ── ALL WORKS PAGE ── */
+.all-hero{margin-top:72px;padding:48px 48px 0;text-align:center}
+.all-title{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,48px);font-weight:400;font-style:italic;color:#151412;line-height:1.1;margin-bottom:8px}
+.all-sub{font-size:14px;color:#8A8880;margin-bottom:36px}
+
+/* filter pills */
+.filter-bar{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:0 48px 40px;border-bottom:1px solid #E8E6E0}
+.f-pill{padding:10px 22px;border-radius:100px;font-size:13px;font-weight:500;color:#5A5854;cursor:pointer;border:1px solid #D0CDC8;background:#fff;transition:all .22s;white-space:nowrap;font-family:'DM Sans',sans-serif}
+.f-pill:hover{border-color:#8A8880;color:#151412}
+.f-pill.active{background:#151412;color:#F8F6F1;border-color:#151412}
+
+/* project grid */
+.all-grid-wrap{max-width:1100px;margin:0 auto;padding:48px 48px 72px}
+.all-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+
+/* card */
+.all-card{border-radius:14px;overflow:hidden;position:relative;cursor:pointer;background:#EAE8E2;text-decoration:none;display:block;transition:opacity .4s,transform .4s}
+.all-card.hidden{opacity:0;transform:scale(.95);pointer-events:none;position:absolute;visibility:hidden}
+.all-card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .6s ease}
+.all-card:hover .all-card-img{transform:scale(1.05)}
+.all-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,8,.92) 0%,rgba(10,9,8,.35) 50%,transparent 100%);opacity:0;transition:opacity .35s}
+.all-card:hover .all-card-overlay{opacity:1}
+.all-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px;transform:translateY(8px);opacity:0;transition:all .35s}
+.all-card:hover .all-card-info{opacity:1;transform:translateY(0)}
+.all-card-cat{font-size:10px;letter-spacing:.14em;color:#C96A4A;text-transform:uppercase;margin-bottom:4px}
+.all-card-title{font-size:15px;font-weight:500;color:#F8F6F1;margin-bottom:2px}
+.all-card-role{font-size:12px;color:rgba(248,246,241,.6)}
+
+/* empty state */
+.all-empty{display:none;text-align:center;padding:80px 20px;color:#8A8880;font-size:15px}
+.all-empty.show{display:block}
+
+/* count */
+.all-count{text-align:center;padding:0 48px;margin-top:-8px;margin-bottom:24px;font-size:12px;color:#B0ADA8;letter-spacing:.04em}
+
+@media(max-width:1024px){
+  .all-hero{padding:40px 32px 0}
+  .filter-bar{padding:0 32px 36px}
+  .all-grid-wrap{padding:40px 32px 64px}
+}
+@media(max-width:768px){
+  .all-hero{padding:36px 20px 0}
+  .filter-bar{padding:0 20px 32px}
+  .all-grid-wrap{padding:36px 20px 56px}
+  .all-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+}
+@media(max-width:480px){
+  .all-hero{padding:32px 16px 0;margin-top:60px}
+  .filter-bar{padding:0 16px 28px;gap:6px}
+  .f-pill{padding:8px 16px;font-size:12px}
+  .all-grid-wrap{padding:28px 16px 48px}
+  .all-grid{grid-template-columns:1fr;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="nav-solid">
+  <a class="nav-circle" id="navCircle" href="../index.html">
+    <span class="home-icon" style="opacity:1">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+        <polyline points="9,21 9,12 15,12 15,21" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+  <div class="nav-right">
+    <a href="../index.html#work">Work</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#about">About</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="all-hero">
+  <div class="all-title">All Work</div>
+  <div class="all-sub"></div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <button class="f-pill active" data-cat="all">All</button>
+  <button class="f-pill" data-cat="xr">XR & Immersive</button>
+  <button class="f-pill" data-cat="spatial">Spatial Experiences</button>
+  <button class="f-pill" data-cat="graphic">Graphic Design</button>
+  <button class="f-pill" data-cat="brand">Brand Systems & Comms</button>
+  <button class="f-pill" data-cat="social">Social & Content</button>
+</div>
+
+<!-- GRID -->
+<div class="all-grid-wrap">
+  <div class="all-grid" id="allGrid">
+
+    <!-- ═══ XR & IMMERSIVE ═══ -->
+    <a class="all-card" href="internship-in-the-afterlife.html" data-cat="xr">
+      <img class="all-card-img" src="../images/thumbnail/internship-hero.webp" alt="Internship in the Afterlife" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">XR & Immersive</div>
+        <div class="all-card-title">Internship in the Afterlife</div>
+        <div class="all-card-role">XR Designer & Narrative Lead</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="xr">
+      <img class="all-card-img" src="../images/thumbnail/internship-hero.webp" alt="Dome of Dreams" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">XR & Immersive</div>
+        <div class="all-card-title">Dome of Dreams</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="xr">
+      <img class="all-card-img" src="../images/thumbnail/internship-hero.webp" alt="Unbox Yourself" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">XR & Immersive</div>
+        <div class="all-card-title">Unbox Yourself</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <!-- ═══ SPATIAL EXPERIENCES ═══ -->
+    <a class="all-card" href="#" data-cat="spatial">
+      <img class="all-card-img" src="../images/thumbnail/visual-merchandising.webp" alt="FLEX Fixture" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Spatial Experiences</div>
+        <div class="all-card-title">FLEX Footwear Fixture</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="spatial">
+      <img class="all-card-img" src="../images/thumbnail/visual-merchandising.webp" alt="Womenswear Fixture" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Spatial Experiences</div>
+        <div class="all-card-title">Womenswear Fixture</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="spatial">
+      <img class="all-card-img" src="../images/thumbnail/visual-merchandising.webp" alt="Lego Kiosk" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Spatial Experiences</div>
+        <div class="all-card-title">Lego Kiosk</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="spatial">
+      <img class="all-card-img" src="../images/thumbnail/visual-merchandising.webp" alt="Skittles" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Spatial Experiences</div>
+        <div class="all-card-title">Skittles</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <!-- ═══ GRAPHIC DESIGN ═══ -->
+    <a class="all-card" href="#" data-cat="graphic">
+      <img class="all-card-img" src="../images/thumbnail/hew-hero.webp" alt="HEW" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Graphic Design</div>
+        <div class="all-card-title">HEW</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="graphic">
+      <img class="all-card-img" src="../images/thumbnail/hew-hero.webp" alt="Wearings" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Graphic Design</div>
+        <div class="all-card-title">Wearings</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="graphic">
+      <img class="all-card-img" src="../images/thumbnail/hew-hero.webp" alt="The Right Roof" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Graphic Design</div>
+        <div class="all-card-title">The Right Roof</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="graphic">
+      <img class="all-card-img" src="../images/thumbnail/hew-hero.webp" alt="Starbursts" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Graphic Design</div>
+        <div class="all-card-title">Starbursts</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <!-- ═══ BRAND SYSTEMS & COMMS ═══ -->
+    <a class="all-card" href="cc-presentation.html" data-cat="brand">
+      <img class="all-card-img" src="../images/thumbnail/cc-presentation-hero.webp" alt="Campaign Champion Presentation" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Brand Systems & Comms</div>
+        <div class="all-card-title">Campaign Champion Presentation</div>
+        <div class="all-card-role">Graphic Design & Program Assistant</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="hongkong-impact-report.html" data-cat="brand">
+      <img class="all-card-img" src="../images/thumbnail/hongkong-impact-report-hero.webp" alt="Intergenerational Leaders Exchange Report" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Brand Systems & Comms</div>
+        <div class="all-card-title">Intergenerational Leaders Exchange Report</div>
+        <div class="all-card-role">Graphic Design & Program Assistant</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="ile-presentation.html" data-cat="brand">
+      <img class="all-card-img" src="../images/thumbnail/ile-presentation-hero.webp" alt="ILE Presentation" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Brand Systems & Comms</div>
+        <div class="all-card-title">ILE Presentation</div>
+        <div class="all-card-role">Graphic Design & Program Assistant</div>
+      </div>
+    </a>
+
+    <!-- ═══ SOCIAL & CONTENT ═══ -->
+    <a class="all-card" href="#" data-cat="social">
+      <img class="all-card-img" src="../images/thumbnail/cc-presentation-hero.webp" alt="Gharenu" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Social & Content</div>
+        <div class="all-card-title">Gharenu</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="social">
+      <img class="all-card-img" src="../images/thumbnail/cc-presentation-hero.webp" alt="Pooja Keyur" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Social & Content</div>
+        <div class="all-card-title">Pooja Keyur</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="social">
+      <img class="all-card-img" src="../images/thumbnail/cc-presentation-hero.webp" alt="Serein Wellness" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Social & Content</div>
+        <div class="all-card-title">Serein Wellness</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+    <a class="all-card" href="#" data-cat="social">
+      <img class="all-card-img" src="../images/thumbnail/cc-presentation-hero.webp" alt="Mansi Gajjar" loading="lazy">
+      <div class="all-card-overlay"></div>
+      <div class="all-card-info">
+        <div class="all-card-cat">Social & Content</div>
+        <div class="all-card-title">Mansi Gajjar</div>
+        <div class="all-card-role">Coming soon</div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="all-empty" id="allEmpty">No projects in this category yet.</div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="contact-pre">Let's talk</div>
+  <div class="contact-head">Good work starts<br>with a good conversation.</div>
+  <div class="c-btns">
+    <a class="c-btn-coffee" href="mailto:shajwaninamrata@gmail.com?subject=Let's%20chat%20more%20over%20coffee">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#fff" stroke-width="1.6"/><polyline points="22,6 12,13 2,6" stroke="#fff" stroke-width="1.6"/></svg>
+      Let's get coffee!
+    </a>
+  </div>
+  <div class="contact-foot">
+    <span class="contact-copy">© 2025 Namrata Shajwani</span>
+    <button class="back-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+    <span></span>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+(function(){
+  var pills=document.querySelectorAll('.f-pill');
+  var cards=document.querySelectorAll('.all-card');
+  var countEl=document.getElementById('allCount');
+  var emptyEl=document.getElementById('allEmpty');
+  var currentCat='all';
+
+  // check URL for ?cat= parameter
+  var params=new URLSearchParams(window.location.search);
+  var urlCat=params.get('cat');
+  if(urlCat){
+    currentCat=urlCat;
+    pills.forEach(function(p){
+      p.classList.toggle('active',p.getAttribute('data-cat')===urlCat);
+    });
+  }
+
+  function filterTo(cat){
+    currentCat=cat;
+    // update pills
+    pills.forEach(function(p){
+      p.classList.toggle('active',p.getAttribute('data-cat')===cat);
+    });
+    // filter cards
+    var visible=0;
+    cards.forEach(function(c){
+      var show=cat==='all'||c.getAttribute('data-cat')===cat;
+      if(show){c.classList.remove('hidden');visible++}
+      else{c.classList.add('hidden')}
+    });
+    // empty state
+    emptyEl.classList.toggle('show',visible===0);
+    // update URL without reload
+    var newUrl=cat==='all'?window.location.pathname:window.location.pathname+'?cat='+cat;
+    history.replaceState(null,'',newUrl);
+  }
+
+  // pill clicks
+  pills.forEach(function(p){
+    p.addEventListener('click',function(){
+      filterTo(this.getAttribute('data-cat'));
+    });
+  });
+
+  // apply initial filter
+  filterTo(currentCat);
+})();
+</script>
+</body>
+</html>
