@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Campaign Champion Presentation — Namrata Shajwani</title>
+<title>Campaign Champion Presentation Design — Namrata Shajwani</title>
+<meta name="description" content="Presentation design for Northeastern University's Campaign Champions mid-year Co-Chair Call — briefing stakeholders on progress, goals, and community impact through clear visual communication.">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/project.css">
@@ -91,11 +92,10 @@
     <div class="proj-hero-cat">Brand Systems & Communications · 2026</div>
     <div class="proj-hero-title">Campaign Champion<br><em>Presentation</em></div>
     <div class="pill-row">
-      <!-- UPDATE THESE PILLS LATER -->
       <span class="kpill">Presentation Design</span>
-      <span class="kpill">Brand Systems</span>
+      <span class="kpill">Institutional Branding</span> 
       <span class="kpill">Visual Communication</span>
-      <span class="kpill">Layout Design</span>
+      <span class="kpill">Stakeholder Communications</span>
     </div>
   </div>
 </div>
@@ -121,11 +121,12 @@
   <!-- THE PROJECT -->
   <div class="proj-section">
     <div class="proj-sec-label">The Project</div>
-    <!-- UPDATE HEADLINE LATER -->
-    <div class="proj-sec-headline">Designing the visual identity for Northeastern's mid-year Campaign Champion Co-Chair Call.</div>
+    <div class="proj-sec-headline">Translating campaign milestones and sensitive institutional data into a clear, navigable visual briefing for executive stakeholders.</div>
     <div class="proj-body">
-      <!-- UPDATE BODY TEXT LATER -->
-      <p>[Project description coming soon — Namrata will provide the full writeup for this section.]</p>
+      <p>Northeastern University's <strong>Campaign Champions</strong> are a volunteer cohort of over 100 faculty and staff across 10 global campuses who drive the university's historic <em>Experience Powered by Northeastern</em> campaign, a fundraising initiative. This presentation was designed for a mid-year critical touchpoint where incoming champions are welcomed into the community and existing members receive a comprehensive briefing on progress, goals, and next steps.</p>
+      <p>I was responsible for designing the full presentation — synthesizing dense internal documents, paraphrasing key updates, and translating monetary figures, participation data, and community milestones into visual formats that are <strong>easily readable across a diverse audience</strong>. The presentation covers fall semester progress, shared campaign goals, financial updates, upcoming events, key observations, and stories from the term.</p>
+      <p>Working with discrete insider information — including community member details, monetary figures, and sensitive project updates — required utmost professionalism and care. Every data point, layout decision, and visual hierarchy was designed to make complex institutional information accessible and navigable while maintaining strict adherence to Northeastern's brand guidelines.</p>
+      <p style="font-size:13px;color:#8A8880;margin-top:20px;font-style:italic">Note: Not all projects and details are included due to sensitive institutional information. More information about workflow is available upon request.</p>
     </div>
   </div>
 
@@ -256,12 +257,13 @@
   var wheelCooldown=false;
   slideshow.addEventListener('wheel',function(e){
     if(wheelCooldown)return;
-    var delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
-    if(Math.abs(delta)>30){
+    // only respond to horizontal swipes (trackpad), ignore vertical scroll
+    if(Math.abs(e.deltaX)<Math.abs(e.deltaY))return;
+    if(Math.abs(e.deltaX)>15){
       e.preventDefault();
-      delta>0?goTo(cur+1):goTo(cur-1);
+      e.deltaX>0?goTo(cur+1):goTo(cur-1);
       wheelCooldown=true;
-      setTimeout(function(){wheelCooldown=false},400);
+      setTimeout(function(){wheelCooldown=false},500);
     }
   },{passive:false});
 })();
