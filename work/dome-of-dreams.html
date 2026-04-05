@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dome of Dreams — Namrata Shajwani</title>
+<meta name="description" content="A Black Mirror-inspired VR experience exploring dream manipulation, lucid dreaming, and the ethics of immersive technology — built with Unity 3D, Blender, and AI-generated worlds.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/project.css">
+<style>
+/* narrative excerpt */
+.narrative-block{background:#1a1917;border-radius:14px;padding:36px 40px;margin-top:28px;color:#E8E6E0;font-size:14px;line-height:1.85;position:relative;overflow:hidden}
+.narrative-block::before{content:'"';position:absolute;top:-10px;left:20px;font-family:'Fraunces',serif;font-size:120px;color:rgba(201,106,74,.15);line-height:1}
+.narrative-block p{margin-bottom:14px;position:relative;z-index:1}
+.narrative-block p:last-child{margin-bottom:0}
+.narrative-block em{color:#C96A4A;font-style:italic}
+.narrative-label{font-size:10px;letter-spacing:.16em;color:#666;text-transform:uppercase;margin-bottom:16px;position:relative;z-index:1}
+
+/* full-width single image */
+.img-single{margin-top:28px}
+.img-single .img-wrap{border-radius:12px;overflow:hidden;background:#EAE8E2}
+.img-single .img-wrap img{width:100%;height:auto;object-fit:contain;display:block}
+
+@media(max-width:768px){
+  .narrative-block{padding:28px 24px}
+}
+@media(max-width:480px){
+  .narrative-block{padding:24px 20px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="nav-solid">
+  <a class="nav-circle" id="navCircle" href="../index.html">
+    <span class="home-icon" style="opacity:1">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+        <polyline points="9,21 9,12 15,12 15,21" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+  <div class="nav-right">
+    <a href="../index.html#work">Work</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#about">About</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="bc-sep">→</span>
+  <a href="../index.html#work">Work</a>
+  <span class="bc-sep">→</span>
+  <a href="all.html?cat=xr">XR & Immersive</a>
+  <span class="bc-sep">→</span>
+  Dome of Dreams
+</div>
+
+<!-- HERO -->
+<div class="proj-hero">
+  <img src="../images/work/dome-of-dreams/domeofdreams-hero.webp" alt="Dome of Dreams — VR Experience">
+  <div class="proj-hero-overlay"></div>
+  <div class="proj-hero-content">
+    <div class="proj-hero-cat">XR & Immersive</div>
+    <div class="proj-hero-title">Dome of<br><em>Dreams</em></div>
+    <div class="pill-row">
+      <span class="kpill">VR Experience Design</span>
+      <span class="kpill">Narrative Design</span>
+      <span class="kpill">Unity 3D</span>
+      <span class="kpill">Blender</span>
+      <span class="kpill">AI-Generated Environments</span>
+    </div>
+  </div>
+</div>
+
+<div class="proj-container" style="max-width:900px;margin:0 auto;padding:0 48px">
+
+  <!-- META -->
+  <div class="meta-row">
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">XR Designer, Writer,<br>& Experience designer</div>
+    </div>
+    <div>
+      <div class="meta-label">Built with</div>
+      <div class="meta-value">Unity 3D · Blender · Skybox AI<br>Adobe Suite · Hoverlay (AR)</div>
+    </div>
+    <div>
+      <div class="meta-label">Context</div>
+      <div class="meta-value">Virtual Reality, XR,<br> & Immersive Media exploration</div>
+    </div>
+  </div>
+
+  <!-- THE PROJECT -->
+  <div class="proj-section">
+    <div class="proj-sec-label">The Project</div>
+    <div class="proj-sec-headline">What if you could design your dreams — and what if it couldn't stop?</div>
+    <div class="proj-body">
+      <p><em>The project began as a written narrative exercise and evolved into an immersive experience combining VR worlds, AR storytelling, and AI-generated content. Dome of Dreams</em> is an experience inspired by the extremities of a popular series Black Mirror, exploring promise and dark consequences of technology. It lets you manipulate your own dreams.</p>
+      <p>The concept draws from a key observation: long before VR existed, humans have always sought ways to construct worlds different from their physical surroundings — through substances, spiritual practices, or something as involuntary as dreaming. <em>Dome of Dreams</em> takes that instinct and asks what happens when technology gives you <strong>total control</strong> over it.</p>
+      <p>The experience places users inside surreal, AI-generated dreamscapes projected in a 180-degree dome. They explore worlds built from prompts, experiencing the wonder of designed dreams. The narrative gradually reveals the dangers of dependency, reality detachment, and the eroding real-world presence.</p>
+    </div>
+  </div>
+
+  <!-- NARRATIVE EXCERPT -->
+  <div class="proj-section">
+    <div class="proj-sec-label">The Narrative</div>
+    <div class="proj-sec-headline">A Black Mirror episode, written from scratch.</div>
+    <div class="proj-body">
+       <p>Catherine doesn't sleep well. Most nights, her mind replays the same loop of a growing list of things she can't control. Medication does not work anymore.</p>
+      <p><em>The Dome of Dreams</em> app, promises to let her design her own dreams. And it works. She sleeps. She dreams.</p>
+      <p>But the real world starts to feel thinner. Feedback stings harder. Phone calls feel unbearable. She catches herself building the dome in her head — at work, in traffic, mid-conversation. The app glitches.</p>
+      <p>Then one night, she sees the dome. And inside it — herself. Still asleep, while she is still awake.</p>
+      <p style="margin-top:20px"><a href="../assets/dome-of-dreams-episode.pdf" target="_blank" style="color:#C96A4A;text-decoration:none;font-weight:500;font-style:italic;transition:opacity .2s">Don't stop here — read the full episode ↗</a></p>
+    </div>
+    <div class="narrative-block">
+      <div class="narrative-label">Excerpt from the episode</div>
+      <p>She saw the most vivid visuals. Her family and loved ones in an imaginary world filled with camping, bonfires, barbecue dinner, and comfortable tents that she slept in, in the dream. She had the option of saving or deleting dreams from the Dream Library which would help the system to study her preferences and design <em>personalised experiences</em>.</p>
+      <p>Until one day, while she was driving to work — a homeless man slammed the window of the car. This was weird, this is exactly what the app blocks. It protects her from real world traumas. As the day passed, she forgets about it. Until it happens again in her dreams, when a bright sunny day at her childhood treehouse turns eerie and haunted.</p>
+    </div>
+  </div>
+
+  <!-- PROCESS SKETCH MAP -->
+  <div class="proj-section">
+    <div class="proj-sec-label">Process</div>
+    <div class="proj-sec-headline">Narrative to experience.</div>
+
+    <svg width="100%" viewBox="0 0 680 620" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif">
+<defs>
+<marker id="sk-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="0" width="680" height="620" fill="#f0ece4" rx="0"/>
+<g stroke="#C96A4A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<rect x="40" y="30" width="200" height="110" rx="3" stroke-width="1.8" transform="rotate(-1.2 140 85)"/>
+<text x="56" y="58" font-size="11" font-weight="700" letter-spacing=".12em" fill="#C96A4A" transform="rotate(-1.2 56 58)">PHASE 1</text>
+<text x="56" y="82" font-size="17" font-weight="700" fill="#C96A4A" transform="rotate(-1.2 56 82)">Write the script</text>
+<line x1="56" y1="87" x2="196" y2="85" stroke-width="2.2" stroke="#C96A4A" opacity=".6" transform="rotate(-1.2 126 86)"/>
+<text x="56" y="108" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(-1.2 56 108)">Black Mirror episode</text>
+<text x="56" y="124" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(-1.2 56 124)">Catherine's story ★</text>
+<path d="M242 95 C270 92, 290 78, 310 72" stroke-width="1.6" stroke="#C96A4A" opacity=".5" marker-end="url(#sk-arrow)"/>
+<rect x="310" y="24" width="190" height="105" rx="3" stroke-width="1.8" transform="rotate(0.8 405 76)"/>
+<text x="326" y="52" font-size="11" font-weight="700" letter-spacing=".12em" fill="#C96A4A" transform="rotate(0.8 326 52)">PHASE 2</text>
+<text x="326" y="76" font-size="17" font-weight="700" fill="#C96A4A" transform="rotate(0.8 326 76)">Research</text>
+<text x="326" y="98" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(0.8 326 98)">Blascovich & Bailenson</text>
+<text x="326" y="114" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(0.8 326 114)">VR embodiment, ethics</text>
+<path d="M502 80 C530 84, 545 90, 560 100" stroke-width="1.6" stroke="#C96A4A" opacity=".5" marker-end="url(#sk-arrow)"/>
+<rect x="510" y="22" width="148" height="50" rx="2" stroke-width="1.2" stroke-dasharray="6 4" transform="rotate(2 584 47)" opacity=".5"/>
+<text x="530" y="52" font-size="11" fill="#C96A4A" opacity=".5" font-style="italic" transform="rotate(2 530 52)">class debates !!</text>
+<path d="M405 130 C410 160, 400 180, 390 200" stroke-width="1.6" stroke="#C96A4A" opacity=".5" marker-end="url(#sk-arrow)"/>
+<text x="420" y="172" font-size="10" fill="#C96A4A" opacity=".4" font-style="italic" transform="rotate(12 420 172)">ideas form...</text>
+<rect x="260" y="200" width="230" height="120" rx="3" stroke-width="2" transform="rotate(-0.6 375 260)"/>
+<text x="278" y="228" font-size="11" font-weight="700" letter-spacing=".12em" fill="#C96A4A" transform="rotate(-0.6 278 228)">PHASE 3</text>
+<text x="278" y="254" font-size="17" font-weight="700" fill="#C96A4A" transform="rotate(-0.6 278 254)">World Building</text>
+<line x1="278" y1="259" x2="440" y2="257" stroke-width="2.5" stroke="#C96A4A" opacity=".55" transform="rotate(-0.6 359 258)"/>
+<text x="278" y="278" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(-0.6 278 278)">3 AI skyboxes → Unity</text>
+<text x="278" y="296" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(-0.6 278 296)">Blender 3D assets</text>
+<text x="278" y="312" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(-0.6 278 312)">bedroom, lamp, dome ✦</text>
+<circle cx="510" cy="260" r="28" stroke-width="1.4" stroke-dasharray="5 4" transform="rotate(3 510 260)" fill="none"/>
+<text x="510" y="256" font-size="10" fill="#C96A4A" opacity=".6" text-anchor="middle" font-weight="700" transform="rotate(3 510 256)">surreal</text>
+<text x="510" y="270" font-size="10" fill="#C96A4A" opacity=".6" text-anchor="middle" transform="rotate(3 510 270)">worlds</text>
+<path d="M320 322 C290 350, 240 370, 200 385" stroke-width="1.6" stroke="#C96A4A" opacity=".5" marker-end="url(#sk-arrow)"/>
+<path d="M420 322 C440 350, 470 370, 490 385" stroke-width="1.6" stroke="#C96A4A" opacity=".5" marker-end="url(#sk-arrow)"/>
+<rect x="50" y="380" width="210" height="100" rx="3" stroke-width="1.8" transform="rotate(1.5 155 430)"/>
+<text x="68" y="406" font-size="11" font-weight="700" letter-spacing=".12em" fill="#C96A4A" transform="rotate(1.5 68 406)">PHASE 4</text>
+<text x="68" y="430" font-size="17" font-weight="700" fill="#C96A4A" transform="rotate(1.5 68 430)">AR Intro</text>
+<text x="68" y="452" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(1.5 68 452)">Holonote avatar</text>
+<text x="68" y="468" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(1.5 68 468)">QR → narrative context</text>
+<rect x="400" y="378" width="240" height="105" rx="3" stroke-width="1.8" transform="rotate(-1 520 430)"/>
+<text x="418" y="404" font-size="11" font-weight="700" letter-spacing=".12em" fill="#C96A4A" transform="rotate(-1 418 404)">PHASE 5</text>
+<text x="418" y="430" font-size="17" font-weight="700" fill="#C96A4A" transform="rotate(-1 418 430)">VR Experience</text>
+<line x1="418" y1="435" x2="590" y2="433" stroke-width="2.2" stroke="#C96A4A" opacity=".55" transform="rotate(-1 504 434)"/>
+<text x="418" y="454" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(-1 418 454)">Unity + interaction design</text>
+<text x="418" y="472" font-size="12" fill="#C96A4A" opacity=".7" transform="rotate(-1 418 472)">distractions → sleep disruption</text>
+<path d="M262 460 C310 470, 360 475, 398 460" stroke-width="1.6" stroke="#C96A4A" opacity=".5" marker-end="url(#sk-arrow)"/>
+<text x="330" y="486" font-size="10" fill="#C96A4A" opacity=".4" font-style="italic">feeds into →</text>
+<path d="M520 485 C510 510, 420 530, 370 540" stroke-width="1.6" stroke="#C96A4A" opacity=".5" marker-end="url(#sk-arrow)"/>
+<rect x="180" y="520" width="260" height="75" rx="3" stroke-width="2.2" transform="rotate(0.5 310 557)"/>
+<text x="200" y="548" font-size="11" font-weight="700" letter-spacing=".12em" fill="#C96A4A" transform="rotate(0.5 200 548)">PHASE 6</text>
+<text x="200" y="574" font-size="17" font-weight="700" fill="#C96A4A" transform="rotate(0.5 200 574)">Exhibition + Posters</text>
+<line x1="200" y1="579" x2="412" y2="578" stroke-width="2.5" stroke="#C96A4A" opacity=".55" transform="rotate(0.5 306 578)"/>
+<path d="M556 520 L562 508 L568 520" stroke-width="1.2" opacity=".25" fill="none"/>
+<path d="M580 530 L586 518 L592 530" stroke-width="1.2" opacity=".25" fill="none"/>
+<circle cx="155" cy="168" r="4" stroke-width="1" opacity=".25" fill="none"/>
+<circle cx="165" cy="175" r="3" stroke-width="1" opacity=".2" fill="none"/>
+<text x="560" y="560" font-size="11" fill="#C96A4A" opacity=".35" font-style="italic" transform="rotate(-3 560 560)">VR headsets</text>
+<text x="560" y="576" font-size="11" fill="#C96A4A" opacity=".35" font-style="italic" transform="rotate(-3 560 576)">+ AR entry</text>
+<path d="M82 152 C80 160, 86 170, 94 168 C100 165, 96 155, 90 152 C86 150, 82 152, 82 152" stroke-width="1" opacity=".2"/>
+</g>
+</svg>
+  </div>
+
+  <!-- WORLD DESIGN -->
+  <div class="proj-section">
+    <div class="proj-sec-label">World Design</div>
+    <div class="proj-sec-headline">Three surreal dreamscapes, generated and crafted.</div>
+    <div class="proj-body">
+      <p>Each world was ideating utilising notes from <em>'what would your dream world look like if you could customise it?'</em> exercise with peers. Built from an AI-generated prompt, then refined with custom 3D assets and lighting. The environments were designed to feel enchanting at first, and then increasingly unsettling as the narrative progresses.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:28px">
+      <div>
+        <div class="img-wrap wide">
+          <img src="../images/work/dome-of-dreams/domeofdreams-world1.webp" alt="Dream World 1" loading="lazy">
+        </div>
+        <div class="img-cap">World 1 — The Enchanted Forest</div>
+      </div>
+      <div>
+        <div class="img-wrap wide">
+          <img src="../images/work/dome-of-dreams/domeofdreams-world2.webp" alt="Dream World 2" loading="lazy">
+        </div>
+        <div class="img-cap">World 2 — Wonderous Waterfall</div>
+      </div>
+      <div>
+        <div class="img-wrap wide">
+          <img src="../images/work/dome-of-dreams/domeofdreams-world3.webp" alt="Dream World 3" loading="lazy">
+        </div>
+        <div class="img-cap">World 3 — Aurora Lightning</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="proj-section">
+    <div class="proj-sec-label">Typography</div>
+    <div class="img-grid-2">
+      <div>
+        <div class="img-wrap wide">
+          <img src="../images/work/dome-of-dreams/logo-process.webp" alt="Logo process and ideation" loading="lazy">
+        </div>
+        <div class="img-cap">Process and ideation sketch on Procreate</div>
+      </div>
+      <div>
+        <div class="img-wrap wide">
+          <img src="../images/work/dome-of-dreams/dod-typography.webp" alt="3D typography explorations" loading="lazy">
+        </div>
+        <div class="img-cap">3D explorations on Maya and Adobe Dimension</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- XR DESIGN PROCESS -->
+  <div class="proj-section">
+    <div class="proj-sec-label">XR Design Process</div>
+    <div class="proj-body">
+      <p>Mapping the full 360-degree user experience required a non-traditional storyboarding approach — accounting for every direction the viewer could look at any given moment.</p>
+    </div>
+    <div class="img-single">
+      <div class="img-wrap">
+        <img src="../images/work/dome-of-dreams/xrdesign-process.webp" alt="XR storyboard — 360 degree mapping" loading="lazy">
+      </div>
+      <div class="img-cap">XR is 360, unlike a one-way looking experience. Storyboard made to map all directions the user could look in</div>
+    </div>
+  </div>
+
+  <!-- USER TESTING — animated GIFs -->
+  <div class="proj-section">
+    <div class="proj-sec-label">User Testing & Exhibition</div>
+    <div class="proj-body">
+      <p>The experience was tested with peers across multiple rounds, refining interaction timing, environmental triggers, and the balance between wonder and unease. The final version was exhibited publicly with VR headsets and AR entry points.</p>
+    </div>
+    <div class="img-grid-2">
+      <div>
+        <div class="img-wrap portrait">
+          <img src="../images/work/dome-of-dreams/domeofdreams-testing1.gif" alt="User testing — player 1">
+        </div>
+        <div class="img-cap">Playtester navigating the dreamscape — Meta Quest headset</div>
+      </div>
+      <div>
+        <div class="img-wrap portrait">
+          <img src="../images/work/dome-of-dreams/domeofdreams-testing2.gif" alt="User testing — player 2">
+        </div>
+        <div class="img-cap">Second playtester exploring the VR environment</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PROJECT NAVIGATION -->
+<div class="proj-nav">
+  <a class="pn-btn" href="javascript:history.back()">
+    <span class="pn-arrow pn-arrow-left">←</span>
+    Back
+  </a>
+  <a class="pn-btn pn-btn-active" href="all.html">
+    View All Projects
+  </a>
+  <a class="pn-btn" href="all.html?cat=xr">
+    More in XR
+    <span class="pn-arrow pn-arrow-right">→</span>
+  </a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="contact-pre">Let's talk</div>
+  <div class="contact-head">Good work starts<br>with a good conversation.</div>
+  <div class="c-btns">
+    <a class="c-btn-coffee" href="mailto:shajwaninamrata@gmail.com?subject=Let's%20chat%20more%20over%20coffee">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#fff" stroke-width="1.6"/><polyline points="22,6 12,13 2,6" stroke="#fff" stroke-width="1.6"/></svg>
+      Let's get coffee!
+    </a>
+  </div>
+  <div class="contact-foot">
+    <span class="contact-copy">© 2025 Namrata Shajwani</span>
+    <button class="back-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+    <span></span>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
