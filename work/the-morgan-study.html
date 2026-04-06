@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Morgan Study — Namrata Shajwani</title>
+<meta name="description" content="An editorial design study of three objects from The Morgan Library & Museum — photography, typography, and print layout exploring centuries-old artifacts through a contemporary design lens.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/project.css">
+<style>
+.proj-container-wide{max-width:1100px;margin:0 auto;padding:0 48px}
+
+/* ── BOOK SLIDESHOW ── */
+.book-wrap{position:relative;max-width:900px;margin:28px auto 0;user-select:none}
+.book-viewport{position:relative;width:100%;overflow:hidden;height:420px}
+.book-pages{display:flex;transition:transform .5s cubic-bezier(.4,.0,.2,1);height:100%}
+.book-page{min-width:100%;width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center;height:100%;cursor:pointer}
+.book-page img{max-height:100%;max-width:100%;width:auto;height:auto;display:block}
+.book-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px}
+.book-arrow{width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.08);border:1px solid #D0CDC8;cursor:pointer;color:#8A8880;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.book-arrow:hover{background:rgba(0,0,0,.12);border-color:#8A8880;color:#151412}
+.book-arrow.disabled{opacity:.3;pointer-events:none}
+.book-indicator{font-size:12px;color:#8A8880;letter-spacing:.06em;min-width:36px;text-align:center}
+.book-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.book-dot{width:7px;height:7px;border-radius:50%;background:#D0CDC8;cursor:pointer;transition:background .25s,transform .25s}
+.book-dot.active{background:#C96A4A;transform:scale(1.25)}
+.book-hint{text-align:center;margin-top:8px;font-size:11px;color:#B0ADA8;font-style:italic;min-height:16px}
+
+/* ── CONVEYOR GALLERY ── */
+.gallery-section{overflow:hidden;padding:48px 0;position:relative}
+.gallery-track{display:flex;align-items:center;gap:20px;width:max-content}
+.gallery-item{flex-shrink:0;height:280px;border-radius:10px;overflow:hidden;transition:transform .5s ease,box-shadow .5s ease;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.gallery-item:hover{transform:scale(1.03);box-shadow:0 16px 48px rgba(0,0,0,.22)}
+.gallery-item img{height:100%;width:auto;display:block;object-fit:cover}
+
+/* ── LIGHTBOX ── */
+.book-lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:background .35s}
+.book-lightbox.active{background:rgba(0,0,0,.92);pointer-events:auto}
+.lb-img-wrap{position:relative;max-width:92vw;max-height:90vh;opacity:0;transform:scale(.92);transition:opacity .35s,transform .35s}
+.book-lightbox.active .lb-img-wrap{opacity:1;transform:scale(1)}
+.lb-img-wrap img{max-width:92vw;max-height:90vh;display:block;object-fit:contain}
+.lb-close{position:absolute;top:-40px;right:0;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.15);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;transition:background .2s}
+.lb-close:hover{background:rgba(255,255,255,.3)}
+.lb-arrow{position:fixed;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);border:none;cursor:pointer;color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:201}
+.lb-arrow:hover{background:rgba(255,255,255,.25)}
+.lb-prev{left:20px}
+.lb-next{right:20px}
+.lb-counter{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.06em;z-index:201}
+
+@media(max-width:1024px){
+  .proj-container-wide{padding:0 32px}
+}
+@media(max-width:768px){
+  .proj-container-wide{padding:0 20px}
+  .book-wrap{max-width:100%}
+  .book-frame{padding:8px}
+  .gallery-item{height:200px}
+}
+@media(max-width:480px){
+  .proj-container-wide{padding:0 16px}
+  .book-frame{padding:6px;border-radius:4px}
+  .gallery-item{height:160px}
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="book-lightbox" id="bookLightbox">
+  <div class="lb-img-wrap">
+    <img src="" id="lbImg" alt="Booklet page">
+    <button class="lb-close" id="lbClose">×</button>
+  </div>
+  <button class="lb-arrow lb-prev" id="lbPrev">‹</button>
+  <button class="lb-arrow lb-next" id="lbNext">›</button>
+  <div class="lb-counter" id="lbCounter"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav" class="nav-solid">
+  <a class="nav-circle" id="navCircle" href="../index.html">
+    <span class="home-icon" style="opacity:1">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+        <polyline points="9,21 9,12 15,12 15,21" stroke="#555" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </a>
+  <div class="nav-right">
+    <a href="../index.html#work">Work</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#about">About</a>
+    <span class="nav-sep">·</span>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="bc-sep">→</span>
+  <a href="../index.html#work">Work</a>
+  <span class="bc-sep">→</span>
+  <a href="all.html?cat=graphic">Graphic Design</a>
+  <span class="bc-sep">→</span>
+  The Morgan Study
+</div>
+
+<!-- HERO -->
+<div class="proj-hero">
+  <img src="../images/work/the-morgan-study/morgan-thumbnail.webp" alt="The Morgan Study — Three Objects from The Morgan Library">
+  <div class="proj-hero-overlay"></div>
+  <div class="proj-hero-content">
+    <div class="proj-hero-cat">Graphic Design</div>
+    <div class="proj-hero-title">The Morgan<br><em>Study</em></div>
+    <div class="pill-row">
+      <span class="kpill">Editorial Design</span>
+      <span class="kpill">Photography</span>
+      <span class="kpill">Print Design</span>
+      <span class="kpill">Typography</span>
+      <span class="kpill">Layout Design</span>
+      <span class="kpill">Visual Research</span>
+    </div>
+  </div>
+</div>
+
+<div class="proj-container-wide">
+
+  <!-- META -->
+  <div class="meta-row">
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Photographer, Writer<br>& Editorial Designer</div>
+    </div>
+    <div>
+      <div class="meta-label">Built with</div>
+      <div class="meta-value">Adobe InDesign · Photoshop<br>Lightroom</div>
+    </div>
+    <div>
+      <div class="meta-label">Context</div>
+      <div class="meta-value">Communication Design<br>Studio Intensive</div>
+    </div>
+  </div>
+
+  <!-- THE PROJECT -->
+  <div class="proj-section">
+    <div class="proj-sec-label">The Project</div>
+    <div class="proj-sec-headline">Visual study and documentation.</div>
+    <div class="proj-body">
+      <p>This project is a printed editorial booklet documenting three objects from <strong>The Morgan Library & Museum</strong> in Manhattan. Each object was photographed on-site, researched, and written about through a personal lens of observation and analysis.</p>
+      <p>The process involved photographing artifacts, maintaining notes in the tour, editing and color-correcting images, and designing the full layout with considered typography, grid structure, and print-ready output. The final deliverable was a physical printed booklet.</p>
+    </div>
+  </div>
+
+  <!-- BOOK SLIDESHOW -->
+  <div class="proj-section">
+    <div class="proj-sec-label">The Booklet</div>
+    <div class="proj-body" style="margin-bottom:8px">
+      <p>Flip through the full printed booklet — click the arrows or use keyboard to navigate.</p>
+    </div>
+
+    <div class="book-wrap" id="bookWrap">
+      <div class="book-viewport">
+        <div class="book-pages" id="bookPages">
+          <div class="book-page">
+            <img src="../images/work/the-morgan-study/morgan-cover.webp" alt="Cover — Three Objects from The Morgan">
+          </div>
+          <div class="book-page">
+            <img src="../images/work/the-morgan-study/morgan-spread1.webp" alt="Object 1 — Portable shrine of Thomas Basin">
+          </div>
+          <div class="book-page">
+            <img src="../images/work/the-morgan-study/morgan-spread2.webp" alt="Object 2 — Parables of the poor woman">
+          </div>
+          <div class="book-page">
+            <img src="../images/work/the-morgan-study/morgan-spread3.webp" alt="Object 3 — Winged hero contesting with lion demon">
+          </div>
+        </div>
+      </div>
+      <div class="book-controls">
+        <button class="book-arrow disabled" id="bookPrev">‹</button>
+        <span class="book-indicator"><span id="bookCurrent">1</span> / <span id="bookTotal">4</span></span>
+        <button class="book-arrow" id="bookNext">›</button>
+      </div>
+      <div class="book-dots" id="bookDots"></div>
+      <div class="book-hint" id="bookHint">Cover</div>
+    </div>
+  </div>
+
+  <!-- PHOTOGRAPHY LABEL -->
+  <div class="proj-section" style="border-bottom:none;padding-bottom:0">
+  </div>
+
+</div>
+
+<!-- CONVEYOR PHOTO GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-track" id="galleryTrack">
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-1.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-2.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-3.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-4.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-5.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-6.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-1.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-2.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-3.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-4.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-5.webp" alt="The Morgan Library photography"></div>
+    <div class="gallery-item"><img src="../images/work/the-morgan-study/gallery-6.webp" alt="The Morgan Library photography"></div>
+  </div>
+</div>
+
+<!-- PROJECT NAVIGATION -->
+<div class="proj-nav">
+  <a class="pn-btn" href="javascript:history.back()">
+    <span class="pn-arrow pn-arrow-left">←</span>
+    Back
+  </a>
+  <a class="pn-btn pn-btn-active" href="all.html">
+    View All Projects
+  </a>
+  <a class="pn-btn" href="all.html?cat=graphic">
+    More in Graphic Design
+    <span class="pn-arrow pn-arrow-right">→</span>
+  </a>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div class="contact-pre">Let's talk</div>
+  <div class="contact-head">Good work starts<br>with a good conversation.</div>
+  <div class="c-btns">
+    <a class="c-btn-coffee" href="mailto:shajwaninamrata@gmail.com?subject=Let's%20chat%20more%20over%20coffee">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#fff" stroke-width="1.6"/><polyline points="22,6 12,13 2,6" stroke="#fff" stroke-width="1.6"/></svg>
+      Let's get coffee!
+    </a>
+  </div>
+  <div class="contact-foot">
+    <span class="contact-copy">© 2025 Namrata Shajwani</span>
+    <button class="back-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+    <span></span>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script>
+(function(){
+  var pages=document.querySelectorAll('.book-page');
+  var pagesWrap=document.getElementById('bookPages');
+  var prevBtn=document.getElementById('bookPrev');
+  var nextBtn=document.getElementById('bookNext');
+  var counterEl=document.getElementById('bookCurrent');
+  var hintEl=document.getElementById('bookHint');
+  var dotsWrap=document.getElementById('bookDots');
+  var total=pages.length;
+  var cur=0;
+  var labels=['Cover','Object 1 — Portable shrine of Thomas Basin','Object 2 — Parables of the poor woman','Object 3 — Winged hero contesting with lion demon'];
+
+  for(var i=0;i<total;i++){
+    var d=document.createElement('div');
+    d.className='book-dot'+(i===0?' active':'');
+    d.setAttribute('data-i',i);
+    d.addEventListener('click',function(){goTo(parseInt(this.getAttribute('data-i')))});
+    dotsWrap.appendChild(d);
+  }
+  var dots=dotsWrap.querySelectorAll('.book-dot');
+
+  function goTo(idx){
+    idx=Math.max(0,Math.min(total-1,idx));
+    dots[cur].classList.remove('active');
+    cur=idx;
+    dots[cur].classList.add('active');
+    pagesWrap.style.transform='translateX(-'+cur*100+'%)';
+    counterEl.textContent=cur+1;
+    hintEl.textContent=labels[cur]||'';
+    prevBtn.classList.toggle('disabled',cur===0);
+    nextBtn.classList.toggle('disabled',cur===total-1);
+  }
+
+  prevBtn.addEventListener('click',function(){goTo(cur-1)});
+  nextBtn.addEventListener('click',function(){goTo(cur+1)});
+
+  var inView=false;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){inView=e[0].isIntersecting},{threshold:.3}).observe(document.getElementById('bookWrap'));
+  }
+  document.addEventListener('keydown',function(e){
+    if(!inView)return;
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(cur-1)}
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();goTo(cur+1)}
+  });
+
+  var sx=0;
+  pagesWrap.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  pagesWrap.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){dx<0?goTo(cur+1):goTo(cur-1)}
+  },{passive:true});
+
+  var wheelCooldown=false;
+  document.getElementById('bookWrap').addEventListener('wheel',function(e){
+    if(wheelCooldown)return;
+    if(Math.abs(e.deltaX)>Math.abs(e.deltaY)&&Math.abs(e.deltaX)>15){
+      e.preventDefault();
+      e.deltaX>0?goTo(cur+1):goTo(cur-1);
+      wheelCooldown=true;
+      setTimeout(function(){wheelCooldown=false},500);
+    }
+  },{passive:false});
+})();
+
+// ── CONVEYOR GALLERY (JS-driven for smooth hover slowdown) ──
+(function(){
+  var track=document.getElementById('galleryTrack');
+  if(!track)return;
+  var pos=0;
+  var speed=0.5;
+  var targetSpeed=0.5;
+  var halfWidth=track.scrollWidth/2;
+  var raf;
+
+  function tick(){
+    speed+=(targetSpeed-speed)*0.03;
+    pos-=speed;
+    if(pos<=-halfWidth)pos+=halfWidth;
+    track.style.transform='translateX('+pos+'px)';
+    raf=requestAnimationFrame(tick);
+  }
+  raf=requestAnimationFrame(tick);
+
+  track.addEventListener('mouseenter',function(){targetSpeed=0.08});
+  track.addEventListener('mouseleave',function(){targetSpeed=0.5});
+})();
+
+// ── LIGHTBOX ──
+(function(){
+  var lightbox=document.getElementById('bookLightbox');
+  var lbImg=document.getElementById('lbImg');
+  var lbClose=document.getElementById('lbClose');
+  var lbPrev=document.getElementById('lbPrev');
+  var lbNext=document.getElementById('lbNext');
+  var lbCounter=document.getElementById('lbCounter');
+  var bookPages=document.querySelectorAll('.book-page img');
+  var srcs=[];
+  bookPages.forEach(function(img){srcs.push(img.src)});
+  var total=srcs.length;
+  var lbCur=0;
+  var isOpen=false;
+
+  function openLb(idx){
+    lbCur=idx;
+    lbImg.src=srcs[lbCur];
+    lbCounter.textContent=(lbCur+1)+' / '+total;
+    lightbox.classList.add('active');
+    document.body.style.overflow='hidden';
+    isOpen=true;
+  }
+  function closeLb(){
+    lightbox.classList.remove('active');
+    document.body.style.overflow='';
+    isOpen=false;
+  }
+  function showLb(idx){
+    lbCur=((idx%total)+total)%total;
+    lbImg.src=srcs[lbCur];
+    lbCounter.textContent=(lbCur+1)+' / '+total;
+  }
+
+  bookPages.forEach(function(img,i){
+    img.parentElement.addEventListener('click',function(){openLb(i)});
+  });
+
+  lbClose.addEventListener('click',closeLb);
+  lbPrev.addEventListener('click',function(e){e.stopPropagation();showLb(lbCur-1)});
+  lbNext.addEventListener('click',function(e){e.stopPropagation();showLb(lbCur+1)});
+  lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLb()});
+
+  document.addEventListener('keydown',function(e){
+    if(!isOpen)return;
+    if(e.key==='Escape')closeLb();
+    if(e.key==='ArrowLeft')showLb(lbCur-1);
+    if(e.key==='ArrowRight')showLb(lbCur+1);
+  });
+})();
+</script>
+</body>
+</html>
